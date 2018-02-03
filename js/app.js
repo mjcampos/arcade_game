@@ -49,13 +49,13 @@ Player.prototype.update = function(dt) {
     var enemy2 = allEnemies[1];
     var enemy3 = allEnemies[2];
 
-    if((this.y === 50) && ((this.x > enemy1.x - 10) && (this.x < enemy1.x + 10))) {
+    if((this.y === 50) && ((this.x > enemy1.x - 50) && (this.x < enemy1.x + 50))) {
         this.y = 450;
         this.x = 200;
-    } else if((this.y === 150) && ((this.x > enemy2.x - 10) && (this.x < enemy2.x + 10))) {
+    } else if((this.y === 150) && ((this.x > enemy2.x - 50) && (this.x < enemy2.x + 50))) {
         this.y = 450;
         this.x = 200;
-    } else if((this.y === 250) && ((this.x > enemy3.x - 10) && (this.x < enemy3.x + 10))) {
+    } else if((this.y === 250) && ((this.x > enemy3.x - 50) && (this.x < enemy3.x + 50))) {
         this.y = 450;
         this.x = 200;
     }
