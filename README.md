@@ -1,6 +1,9 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+Running this game involves the following steps:
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+# Either download or clone this game from github. If you choose to run a git clone use the following SSH key: git@github.com:mjcampos/arcade_game.git
+# Upon getting this on your computer open the game with index.html. Drag it onto an internet browser and you will see the game running immediately
+
+The game's premise is to take your character, cross the payment while avoiding the bugs, and reach the water. If you make contact with any of the bugs then you are forced to return to your starting position. Upon completion the game will reload and you can play again. 
