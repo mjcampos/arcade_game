@@ -6,10 +6,10 @@ var Enemy = function(y) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.y = y;
+    this.y = y;  // The starting Y location of an enemy instance
     this.x = -100;
-    this.speed = Math.floor(Math.random() * 125) + 100;
-    this.delay = Math.floor(Math.random() * 20) + 10;
+    this.speed = Math.floor(Math.random() * 125) + 100;  // How fast an enemy should move
+    this.delay = Math.floor(Math.random() * 20) + 10;  // How much time to wait before enemy begins moving
 };
 
 // Update the enemy's position, required method for game
@@ -18,14 +18,18 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+
+    // When the delay reaches 0 begin moving at this.speed * dt
     if(this.delay === 0) {
         this.x += this.speed * dt;
 
+        // If the enemy instance has moved passed 500px, or off the screen, then reset this.x and set a new this.delay timer
         if(this.x > 500) {
-            this.x = -this.speed;
+            this.x = -100;
             this.delay = Math.floor(Math.random() * 20) + 10;
         }
     } else {
+        // Else decrease this.delay by 1
         this.delay--;
     }
 };
@@ -42,6 +46,7 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 200;
     this.y = 450;
+    this.winningDelay = 10;  // When a player wins set a timer for how long they'll see their character on screen before the reset features are initiated
 }
 
 Player.prototype.update = function(dt) {
@@ -49,6 +54,7 @@ Player.prototype.update = function(dt) {
     var enemy2 = allEnemies[1];
     var enemy3 = allEnemies[2];
 
+    // Check if collision occurs. If true then reset the player to their original starting point
     if((this.y === 50) && ((this.x > enemy1.x - 50) && (this.x < enemy1.x + 50))) {
         this.y = 450;
         this.x = 200;
@@ -59,17 +65,30 @@ Player.prototype.update = function(dt) {
         this.y = 450;
         this.x = 200;
     }
+
+    // If the player reaches the end then they've won. 
+    if (this.y < 0) {
+        // Allow them 10 ticks to see their character in the winning slot before alerting them of their victory and reset the entire game
+        if (this.winningDelay === 0) {
+            alert("You won");
+            location.reload();
+        } else{
+            --this.winningDelay;
+        };
+    };
+
+    // If player tries to go off the bottom tiles then return them to the default this.y location
+    if (this.y > 450) {
+        this.y = 450;
+    };
 }
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
-    if((this.y < 0) || (this.y > 450)) {
-        this.y = 450;
-    }
 }
 
 Player.prototype.handleInput = function(key) {
+    // In any movement the character moves 100px
     if(key === "up") {
         this.y -= 100;
     } else if(key === "down") {
