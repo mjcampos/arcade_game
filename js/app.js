@@ -26,18 +26,32 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 var Player = function() {
     this.sprite = 'images/char-boy.png';
+    this.x = 200;
+    this.y = 450;
 }
 
 Player.prototype.update = function(dt) {
-    
+
 }
 
 Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
+    if(this.y < 0) {
+        this.y = 450;
+    }
 }
 
 Player.prototype.handleInput = function(key) {
-
+    if(key === "up") {
+        this.y = this.y - 100;
+    } else if(key === "down") {
+        this.y = this.y + 100;
+    } else if((key === "right") && (this.x < 400)) {
+        this.x = this.x + 100;
+    } else if((key === "left") && (this.x > 0)) {
+        this.x = this.x - 100;
+    }
 }
 
 // Now instantiate your objects.
