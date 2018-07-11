@@ -2,9 +2,9 @@
 ===============================
 
 ## Table Of Content
-* [Running The Project](#Running-The-Project)
-* [How The Game Works](#How-The-Game-Works)
-* [How To Play The Game](#How-To-Play-The-Game)
+* [Running The Project](#running-the-project)
+* [How The Game Works](#how-the-game-works)
+* [How To Play The Game](#how-to-play-the-game)
 
 ### Running The Project
 * Either download or clone this game from github. If you choose to run a git clone use the following SSH key: git@github.com:mjcampos/arcade_game.git
